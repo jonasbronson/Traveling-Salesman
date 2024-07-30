@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ksu.Cis300.TravelingSalesperson.UserInterface">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="DrawCircuit" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="Plot" Hidden="true" />
+      <Method Name="SetCircuitPoints" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>JACAAAAAAiGAAABQgACCAAACAAAAAAEAQAAEBAAABAA=</HashCode>
+      <FileName>UserInterface.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="uxDrawing" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Ksu.Cis300.TravelingSalesperson.DrawingCanvas">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAAAAAAAACBAAACAAAAAAAAAEAAAABAAAA=</HashCode>
+      <FileName>DrawingCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ksu.Cis300.TravelingSalesperson.CircuitFinder">
+    <Position X="3.25" Y="3" Width="1.75" />
+    <Members>
+      <Method Name="Distance" Hidden="true" />
+      <Method Name="RemoveLast" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAIAAEAAAAAAAAAAAAAIAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>CircuitFinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

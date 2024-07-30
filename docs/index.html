@@ -1,0 +1,827 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='homework-assignment-3-traveling-salesperson-problem'><span>Homework Assignment 3: Traveling Salesperson Problem</span></h1><p><span>For this assignment, you will write a program to find the shortest circuit through a set of points in a plane.</span></p><h2 id='0-table-of-contents'><span>0. Table of Contents</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#homework-assignment-3-traveling-salesperson-problem">Homework Assignment 3: Traveling Salesperson Problem</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n303"><a class="md-toc-inner" href="#0-table-of-contents">0. Table of Contents</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#1-user-requirements">1. User Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" href="#2-starting-the-assignment">2. Starting the Assignment</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" href="#3-user-interface">3. User Interface</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n515"><a class="md-toc-inner" href="#31-gui-design">3.1. GUI Design</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner" href="#32-behavior-of-the-gui">3.2. Behavior of the GUI</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n35"><a class="md-toc-inner" href="#4-software-architecture">4. Software Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n39"><a class="md-toc-inner" href="#5-the-shortest-circuit-algorithm">5. The Shortest Circuit Algorithm</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n41"><a class="md-toc-inner" href="#51-exhaustive-search">5.1. Exhaustive Search</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n102"><a class="md-toc-inner" href="#52-pruning-long-paths">5.2. Pruning Long Paths</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n105"><a class="md-toc-inner" href="#53-exploiting-symmetry">5.3 Exploiting Symmetry</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n126"><a class="md-toc-inner" href="#6-coding-requirements">6. Coding Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n568"><a class="md-toc-inner" href="#61-the-circuitfinder-class">6.1. The CircuitFinder Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n575"><a class="md-toc-inner" href="#611-a-private-method-to-finish-the-shortest-circuit-beginning-with-a-given-path">6.1.1. A private method to finish the shortest circuit beginning with a given path</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n877"><a class="md-toc-inner" href="#612-a-public-findshortestcircuit-method">6.1.2. A public FindShortestCircuit method</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n573"><a class="md-toc-inner" href="#62-the-drawingcanvas-class">6.2. The DrawingCanvas Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n145"><a class="md-toc-inner" href="#621-an-onpaint-method">6.2.1. An OnPaint method</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n149"><a class="md-toc-inner" href="#622-a-public-method-to-draw-a-line-segment">6.2.2. A public method to draw a line segment</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n151"><a class="md-toc-inner" href="#623-a-public-method-to-clear-the-control">6.2.3. A public method to clear the control</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n243"><a class="md-toc-inner" href="#63-the-userinterface-class">6.3. The UserInterface Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n253"><a class="md-toc-inner" href="#631-an-event-handler-to-handle-a-mouseclick-event-on-the-drawingcanvas">6.3.1. An event handler to handle a MouseClick event on the DrawingCanvas</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n257"><a class="md-toc-inner" href="#632-an-event-handler-to-handle-a-mousemove-event-on-the-drawingcanvas">6.3.2. An event handler to handle a MouseMove event on the DrawingCanvas</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n265"><a class="md-toc-inner" href="#633-an-event-handler-to-handle-a-click-event-on-the-find-circuit-button">6.3.3. An event handler to handle a Click event on the "Find Circuit" button</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n275"><a class="md-toc-inner" href="#634-an-event-handler-to-handle-a-click-event-on-the-clear-button">6.3.4. An event handler to handle a Click event on the "Clear" button</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n277"><a class="md-toc-inner" href="#7-testing-and-performance">7. Testing and Performance</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n293"><a class="md-toc-inner" href="#8-submitting-your-assignment">8. Submitting Your Assignment</a></span></p></div><h2 id='1-user-requirements'><span>1. User Requirements</span></h2><p><span>A company is designing an embedded system that will contain several processors on a single board. They are considering several configurations of the physical layout in order to determine the best one. One of the factors they wish to consider is the total length of network cable needed to connect the processors. Because the system will use a token ring for communication, they need to connect the processors into a circuit. Thus, your program will need to find the minimum-length circuit that contains each processor exactly once.</span></p><p><span>This problem can be viewed as a special case of the </span><em><span>Traveling Salesperson Problem</span></em><span>. In that problem, we are given a set of cities with distances between them, and we need to find a minimum-length tour that visits each city exactly once before returning to the first city in the tour. In our version, the cities are the </span><em><span>x</span></em><span>- and </span><em><span>y</span></em><span>-coordinates of the processors on a flat surface, and the distances are just the straight-line distances between the points. Thus, for two points (</span><em><span>x</span></em><sub><span>1</span></sub><span>, </span><em><span>y</span></em><sub><span>1</span></sub><span>) and (</span><em><span>x</span></em><sub><span>2</span></sub><span>, </span><em><span>y</span></em><sub><span>2</span></sub><span>), the distance between these points is:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n555" cid="n555" mdtype="math_block" data-math-tag-before="0" data-math-labels="[]" data-math-tag-after="0"><div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="24.857ex" height="4.208ex" role="img" focusable="false" viewBox="0 -1330.2 10986.7 1860" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.199ex;"><defs><path id="MJX-44-TEX-LO-221A" d="M1001 1150Q1017 1150 1020 1132Q1020 1127 741 244L460 -643Q453 -650 436 -650H424Q423 -647 423 -645T421 -640T419 -631T415 -617T408 -594T399 -560T385 -512T367 -448T343 -364T312 -259L203 119L138 41L111 67L212 188L264 248L472 -474L983 1140Q988 1150 1001 1150Z"></path><path id="MJX-44-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-44-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-44-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-44-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-44-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-44-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-44-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-44-TEX-I-1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msqrt"><g transform="translate(1020,0)"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-44-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(389,0)"><g data-mml-node="mi"><use data-c="1D465" xlink:href="#MJX-44-TEX-I-1D465"></use></g><g data-mml-node="mn" transform="translate(605,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-44-TEX-N-31"></use></g></g><g data-mml-node="mo" transform="translate(1619.8,0)"><use data-c="2212" xlink:href="#MJX-44-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(2620,0)"><g data-mml-node="mi"><use data-c="1D465" xlink:href="#MJX-44-TEX-I-1D465"></use></g><g data-mml-node="mn" transform="translate(605,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-44-TEX-N-32"></use></g></g><g data-mml-node="msup" transform="translate(3628.6,0)"><g data-mml-node="mo"><use data-c="29" xlink:href="#MJX-44-TEX-N-29"></use></g><g data-mml-node="mn" transform="translate(422,289) scale(0.707)"><use data-c="32" xlink:href="#MJX-44-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(4676.3,0)"><use data-c="2B" xlink:href="#MJX-44-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(5676.5,0)"><use data-c="28" xlink:href="#MJX-44-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(6065.5,0)"><g data-mml-node="mi"><use data-c="1D466" xlink:href="#MJX-44-TEX-I-1D466"></use></g><g data-mml-node="mn" transform="translate(523,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-44-TEX-N-31"></use></g></g><g data-mml-node="mo" transform="translate(7214.3,0)"><use data-c="2212" xlink:href="#MJX-44-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(8214.5,0)"><g data-mml-node="mi"><use data-c="1D466" xlink:href="#MJX-44-TEX-I-1D466"></use></g><g data-mml-node="mn" transform="translate(523,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-44-TEX-N-32"></use></g></g><g data-mml-node="msup" transform="translate(9141.1,0)"><g data-mml-node="mo"><use data-c="29" xlink:href="#MJX-44-TEX-N-29"></use></g><g data-mml-node="mn" transform="translate(422,289) scale(0.707)"><use data-c="32" xlink:href="#MJX-44-TEX-N-32"></use></g></g></g><g data-mml-node="mo" transform="translate(0,120.2)"><use data-c="221A" xlink:href="#MJX-44-TEX-LO-221A"></use></g><rect width="9966.7" height="60" x="1020" y="1210.2"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msqrt><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup></msqrt></math></mjx-assistive-mml></mjx-container></div></div><p><span>The traveling salesperson problem is a well-known computationally hard problem - even the best solutions cannot solve large instances in a reasonable amount of time. However, the number of processors in the embedded system is not expected to be more than 13; hence, even a rather simple approach can give acceptable performance.</span></p><p><span>The program should allow the user to select a set of locations from a rectangular area, giving feedback showing which points have been selected. It should be able to find a minimum-length circuit through these points, displaying the circuit and the length to the user. It should also allow additional points to be added after a circuit is found so that a new circuit can be found for all of the points.</span></p><h2 id='2-starting-the-assignment'><span>2. Starting the Assignment</span></h2><p><span>Create a GitHub repository using the link provided on the Canvas assignment, and clone it to your local machine.  The repository contains a new Windows Forms App in which the class </span><strong><span>Form1</span></strong><span> has been renamed to </span><strong><span>UserInterface</span></strong><span>, along with an NUnit test project. You will need to provide the entire user interface design and all of the code.</span></p><h2 id='3-user-interface'><span>3. User Interface</span></h2><p><span>The </span><a href='https://youtu.be/rAJ5Ruwtyyw'><span>demo video</span></a><span> shows the desired look and behavior of your finished program. Here, we will first summarize the GUI design with some instructions on how you will need to set this up. We will then summarize how the finished program should respond to various user actions.</span></p><p><strong><span>Important:</span></strong><span> Don&#39;t start adding code until after you have completed the GUI design described in the following section, as errors in this code will interfere with the function of the Design window.</span></p><h3 id='31-gui-design'><span>3.1. GUI Design</span></h3><p><span>The finished program (</span><em><span>not</span></em><span> the start code) should display a GUI resembling the following:</span></p><p><img src="initial-gui.png" alt="initial-gui" style="zoom:67%;" /></p><p><span>At the top is a </span><strong><span>ToolStrip</span></strong><span> containing two buttons. After you add the </span><strong><span>ToolStrip</span></strong><span>, it will contain a drop-down from which you can select &quot;Button&quot; to add a button. You will need to change each button&#39;s </span><strong><span>DisplayStyle</span></strong><span> property to </span><strong><span>Text</span></strong><span>. You can then use its </span><strong><span>Text</span></strong><span> property to change the text displayed on the button. The &quot;Find Circuit&quot; button should be disabled initially.</span></p><p><span>Below the </span><strong><span>ToolStrip</span></strong><span> is a </span><strong><span>SplitContainer</span></strong><span> - you can find this control in the &quot;Containers&quot; section of the Toolbox. When you add it to the form, it will fill the entire area below the </span><strong><span>ToolStrip</span></strong><span>. You can then adjust the position of the separator  between the two panes by dragging it. (</span><strong><span>Note:</span></strong><span> If the </span><strong><span>SplitContainer</span></strong><span> loses focus before you are finished modifying it, you probably won&#39;t be able to select it with the mouse. You should be able to select it by using the </span><code>Tab</code><span> key to cycle through all of the controls.)</span></p><p><span>The white box on the left is a </span><strong><span>ListBox</span></strong><span> - you can find this control in the &quot;Common Controls&quot; section of the Toolbox. You will need to add it to the left-hand pane of the </span><strong><span>SplitContainer</span></strong><span>. To make it fill this pane even when the pane&#39;s size changes, find the </span><strong><span>ListBox</span></strong><span>&#39;s </span><strong><span>Dock</span></strong><span> property. Click on the property&#39;s value, and from the drop-down, click the large rectangle in the center.</span></p><p><span>The large gray box on the left is a control that you will need to define. In the Solution Explorer, right-click on the project </span><strong><span>Ksu.Cis300.TravelingSalesperson</span></strong><span> (in bold face), and select &quot;Add-&gt;User Control (Windows Forms)...&quot;. Name this control &quot;DrawingCanvas.cs&quot;. This should open a new Design window for this control. The only modification you will need to make in the Design window is to set its </span><strong><span>DoubleBuffered</span></strong><span> property to </span><strong><span>True</span></strong><span>. This will cause updates to be made more smoothly. All other modifications will involve adding code (see </span><a href='#6-coding-requirements'><span>Section 6. Coding Requirements below</span></a><span>). </span></p><p><span>At this point, you will need to run the program in order to compile the </span><strong><span>DrawingCanvas</span></strong><span> class. Once you&#39;ve done this, go back to your main Design window. The Toolbox should now contain &quot;DrawingCanvas&quot; at the top (you may need to scroll up). You can now add one to the right-hand pane of the </span><strong><span>SplitContainer</span></strong><span>. Dock this control as you did the </span><strong><span>ListBox</span></strong><span>.</span></p><p><span>Finally, in order to get a tool tip showing the location of the mouse on the </span><strong><span>DrawingCanvas</span></strong><span>, add a </span><strong><span>ToolTip</span></strong><span> to your form - you can find this control in the &quot;Common Controls&quot; section of the Toolbox. You don&#39;t need to change any of its properties - its behavior will be controlled by code that you add (see </span><a href='#6-coding-requirements'><span>Section 6. Coding Requirements</span></a><span> below).</span></p><h3 id='32-behavior-of-the-gui'><span>3.2. Behavior of the GUI</span></h3><p><span>This section details the behavior that you will need to implement, as described under </span><a href='#6-coding-requirements'><span>Section 6. Coding Requirements</span></a><span> below (see the </span><a href='https://youtu.be/rAJ5Ruwtyyw'><span>demo video</span></a><span> for examples).</span></p><p><span>When the user moves the mouse over the </span><strong><span>DrawingCanvas</span></strong><span>, a tool tip should show the location of the mouse within the </span><strong><span>DrawingCanvas</span></strong><span>. A click on the </span><strong><span>DrawingCanvas</span></strong><span> should cause a small &quot;x&quot;, 3 pixels by 3 pixels, to be drawn at this location, and this location should be added to the </span><strong><span>ListBox</span></strong><span>. Once three points have been plotted in this way, the &quot;Find Circuit&quot; button should be enabled.</span></p><p><span>When the &quot;Find Circuit&quot; button is clicked, a shortest circuit containing the plotted points should be found and displayed as follows:</span></p><ul><li><span>The circuit should be drawn on the </span><strong><span>DrawingCanvas</span></strong><span>.</span></li><li><span>The locations in the </span><strong><span>ListBox</span></strong><span> should be reordered to show the order of the points in the circuit. Each point should only be listed once.</span></li><li><span>A </span><strong><span>MessageBox</span></strong><span> containing the message, &quot;The length of the shortest circuit is: </span><em><span>len</span></em><span>&quot;, where </span><em><span>len</span></em><span> is the length of the shortest circuit, should be shown.</span></li></ul><p><span>After a shortest circuit has been found, any subsequent clicks on the </span><strong><span>DrawingCanvas</span></strong><span> should plot additional points in the same way as above - the circuit should </span><em><span>not</span></em><span> be removed. Clicking the &quot;Find Circuit&quot; button, however, should remove any existing circuit prior to finding a new shortest circuit containing all the points. This circuit should be displayed as described above.</span></p><p><span>Clicking the &quot;Clear&quot; button and any time should remove everything that had been drawn on the </span><strong><span>DrawingCanvas</span></strong><span>, remove all locations from the </span><strong><span>ListBox</span></strong><span>, and disable the &quot;Find Circuit&quot; button.</span></p><p><span>If the form is resized, or the border between the </span><strong><span>ListBox</span></strong><span> and the </span><strong><span>DrawingCanvas</span></strong><span> is moved, both the </span><strong><span>ListBox</span></strong><span> and the </span><strong><span>DrawingCanvas</span></strong><span> should continue to fill their respective areas of the </span><strong><span>SplitContainer</span></strong><span>, and their contents should remain unchanged. If resizing causes some of the lines/points on the </span><strong><span>DrawingCanvas</span></strong><span> to be partially or completely outside of the visible area, enlarging the the form so that they are within the visible area should cause them to reappear.</span></p><h2 id='4-software-architecture'><span>4. Software Architecture</span></h2><p><span>The following class diagram shows the architecture of the program:</span></p><p><img src="ClassDiagram.png" referrerpolicy="no-referrer" alt="The software architecture"></p><p><span>The </span><strong><span>UserInterface</span></strong><span> class implements the main GUI. The </span><strong><span>DrawingCanvas</span></strong><span> class implements the control on which line segments can be drawn. The </span><strong><span>CircuitFinder</span></strong><span> class is a </span><strong><span>static</span></strong><span> class containing the methods needed to find a shortest circuit. Because the class is </span><strong><span>static</span></strong><span>, no instances can be constructed, and all members must be defined as </span><strong><span>static</span></strong><span>. </span></p><h2 id='5-the-shortest-circuit-algorithm'><span>5. The Shortest Circuit Algorithm</span></h2><p><span>The algorithm you will use to find a shortest circuit will be based on an exhaustive search of all circuits, with two optimizations. We will first describe an exhaustive search algorithm. Then we will describe each of the optimizations.</span></p><h3 id='51-exhaustive-search'><span>5.1. Exhaustive Search</span></h3><p><span>Suppose we have a set of points, </span><em><span>p</span></em><sub><span>0</span></sub><span>, </span><em><span>p</span></em><sub><span>1</span></sub><span>, . . ., </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>, where </span><em><span>n</span></em><span> ≥ 3. The exhaustive search algorithm revolves around a tree defined as follows:</span></p><ul><li><span>The root is point </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>. Because the circuit must contain all the points, we can arbitrarily choose this point as the starting point.</span></li><li><span>The children of each node are all the points that do not occur in the path from the root to that node.</span></li></ul><p><span>For example, if we call four points </span><em><span>a</span></em><span>, </span><em><span>b</span></em><span>, </span><em><span>c</span></em><span>, and </span><em><span>d</span></em><span>, in that order, we have the following tree:</span></p><p><img src="path-tree.png" referrerpolicy="no-referrer" alt="A path tree generated from four points."></p><p><span>Note that the order in which the children of a node are shown is unimportant. Each of the paths from the root to a leaf within this tree is a different path starting at point </span><em><span>d</span></em><span> and containing all four points exactly once. From the last point in each of these paths, we can then return to </span><em><span>d</span></em><span> to complete each of the circuits that contain each point exactly once. The exhaustive search algorithm searches this tree recursively for the shortest such circuit.</span></p><p><span>In order to search this tree, we need to maintain the length of the path to the point in the current node and two collections of points:</span></p><ul><li><span>The sequence of points from the root to the current node.</span></li><li><span>The set of remaining points.</span></li></ul><p><span>Before we describe the recursive algorithm, we need to state precisely what we want it to do at any node of the tree: We want it to return the shortest circuit beginning with the path to the current node, along with this circuit&#39;s length. Furthermore, in order to be able to make successive recursive calls, we want the algorithm to leave the two collections of points unchanged.</span></p><p><span>The base case for the algorithm is a leaf - no points remain. In this case, there is only one circuit - the path to the current point, followed by the a return to the starting point </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>. Its length is the length of the path to the current point plus the distance from the current point to </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>.</span></p><p><span>If points remain, we need to search each of the children. A child can be reached by moving a point </span><em><span>p</span></em><span> from the set of remaining nodes to the sequence of points, and the length of the path to this child is the length of the path to the current point plus the distance from the current point to point </span><em><span>p</span></em><span>. A recursive call then finds the shortest circuit beginning with the path to </span><em><span>p</span></em><span>. Following a recursive call, we need to move </span><em><span>p</span></em><span> from the end of the path back to the set of remaining points. We need to return the shortest of the circuits obtained by each possible recursive call.</span></p><p><span>We now observe that the algorithm outlined above doesn&#39;t need to use any representation of the tree. This tree is simply a way for us to think about how to structure the recursion. We therefore don&#39;t need to implement the tree itself.</span></p><p><span>In the next two sections, we will present optimizations to this exhaustive search algorithm.</span></p><h3 id='52-pruning-long-paths'><span>5.2. Pruning Long Paths</span></h3><p><span>We can optimize the above algorithm by skipping certain paths that can&#39;t possibly give us the shortest circuit. Because we are working with distances in a plane, we know that the direct distance from a given point to </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span> can&#39;t be greater than the length of a path from the same point, through some intermediate points, and finally to </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>. Thus, at any node in the tree, we have a lower bound on the length of the circuits we are currently finding. If this lower bound is at least as large as the shortest circuit we&#39;ve found so far, there is no sense extending the current path any further. In this case, we simply return the current path as the shortest circuit. We can return any length as long as it is at least as large as the shortest circuit we&#39;ve found so far.</span></p><p><span>In order to implement this optimization, we need another parameter that gives us an upper bound on useful circuit lengths (essentially the shortest circuit we&#39;ve found so far). Furthermore, implementing this optimization means that we sometimes will return an incomplete circuit - a circuit that doesn&#39;t contain all the points. We therefore need to modify the specification of the algorithm to state that if the length returned is greater than or equal to the bound, then all circuits have a length greater than or equal to this bound, the circuit and length returned have no other meaning.</span></p><h3 id='53-exploiting-symmetry'><span>5.3 Exploiting Symmetry</span></h3><p><span>Any circuit that we find will have the same length as its reverse; hence, we would like to avoid checking the reverse of a circuit we have already checked. Note that because we are dealing with at least three points, </span><em><span>p</span></em><sub><span>0</span></sub><span> and </span><em><span>p</span></em><sub><span>1</span></sub><span> are always distinct from </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span>. Consider any circuit starting with </span><em><span>p</span></em><sub><em><span>n</span></em><span>-1</span></sub><span> and the reverse of this circuit. In one of these two circuits, </span><em><span>p</span></em><sub><span>0</span></sub><span> will occur somewhere before </span><em><span>p</span></em><sub><span>1</span></sub><span>, but in the other, </span><em><span>p</span></em><sub><span>0</span></sub><span> will occur somewhere after </span><em><span>p</span></em><sub><span>1</span></sub><span>. If we consider only those paths in which </span><em><span>p</span></em><sub><span>0</span></sub><span> occurs after </span><em><span>p</span></em><sub><span>1</span></sub><span>, any path we exclude will be the reverse of one of these paths. In this way, we can avoid checking both a path and its reverse.</span></p><p><span>To implement this optimization, we will need to represent the set of remaining points as a sequence rather than a set, so that we can keep track of which points are </span><em><span>p</span></em><sub><span>0</span></sub><span> and </span><em><span>p</span></em><sub><span>1</span></sub><span>. We will also need one more parameter, a </span><strong><span>bool</span></strong><span> indicating whether we want to find all circuits. We then modify the specification so that at a tree node where this parameter is </span><strong><span>false</span></strong><span> and more than one point remains to be added to the path, we will only consider those circuits in which the first remaining point (</span><em><span>p</span></em><sub><span>0</span></sub><span>) appears later than the second remaining point (</span><em><span>p</span></em><sub><span>1</span></sub><span>).</span></p><h2 id='6-coding-requirements'><span>6. Coding Requirements</span></h2><p><span>In what follows, we give specific coding requirements for each of the classes shown in the class diagram above. The names of most of your fields, properties, and methods don&#39;t need to match those shown in the diagram, as long as they follow the </span><a href='https://cis300.cs.ksu.edu/appendix/style/'><span>style requirements</span></a><span>. In order for the unit test code to work, however, the </span><strong><span>GetShortestCircuit</span></strong><span> method of the </span><strong><span>CircuitFinder</span></strong><span> class must have this name. In some cases, you are required to break the code into additional </span><strong><span>private</span></strong><span> methods that are not described. In deciding what code to put into other methods, consider how you can use additional methods to avoid duplicating code or to shorten what would otherwise be a long method.</span></p><p><span>The code described below uses the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point?view=net-6.0'><strong><span>Point</span></strong></a><span> structure to represent a point in the plane. Note that because it is a structure, it is a value type. You will need to use the following </span><strong><span>public</span></strong><span> members of this structure:</span></p><ul><li><span>A </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point.-ctor?view=net-6.0#system-drawing-point-ctor(system-int32-system-int32)'><span>constructor</span></a><span> that takes two </span><strong><span>int</span></strong><span> parameters giving the </span><em><span>x</span></em><span>- and </span><em><span>y</span></em><span>- coordinates of the point being constructed.</span></li><li><span>A property </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point.x?view=net-6.0#system-drawing-point-x'><strong><span>X</span></strong></a><span> that gets or sets an </span><strong><span>int</span></strong><span> giving the </span><em><span>x</span></em><span>-coordinate of the point.</span></li><li><span>A property </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point.y?view=net-6.0#system-drawing-point-y'><strong><span>Y</span></strong></a><span> that gets or sets an </span><strong><span>int</span></strong><span> giving the </span><em><span>y</span></em><span>-coordinate of the point.</span></li></ul><h3 id='61-the-circuitfinder-class'><span>6.1. The CircuitFinder Class</span></h3><p><span>This class must be defined as </span><strong><span>static</span></strong><span>:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51562px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">public static class CircuitFinder</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>You will need to define one </span><strong><span>public</span></strong><span> method and at least two </span><strong><span>private</span></strong><span> methods within this class. All of these methods will need to be </span><strong><span>static</span></strong><span>. You won&#39;t need any fields or properties. The </span><strong><span>public</span></strong><span> method and one of the </span><strong><span>private</span></strong><span> methods are described in what follows. You will need to decide how to break the code into at least one other </span><strong><span>private</span></strong><span> method.</span></p><h4 id='611-a-private-method-to-finish-the-shortest-circuit-beginning-with-a-given-path'><span>6.1.1. A private method to finish the shortest circuit beginning with a given path</span></h4><p><span>This method needs the following parameters:</span></p><ul><li><span>A </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> giving the sequence of points in a path. You may assume this list is nonempty.</span></li><li><span>A </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> giving the points that remain to be included in the circuit.</span></li><li><span>A </span><strong><span>double</span></strong><span> giving the length of the path described by the first parameter.</span></li><li><span>A </span><strong><span>double</span></strong><span> giving an upper bound on the length of a useable circuit (i.e., any circuit found that has a length greater than or equal to this bound will not be used by the calling code - see </span><a href='#52-pruning-long-paths'><span>Section 5.2. Pruning Long Paths</span></a><span>).</span></li><li><span>A </span><strong><span>bool</span></strong><span> indicating whether all circuits should be searched. If this parameter is </span><strong><span>false</span></strong><span> and more than one point is given in the second parameter above, only circuits in which the second point in that list precedes the first point in that list will be searched (see </span><a href='#53-exploiting-symmetry'><span>Section 5.3. Exploiting Symmetry</span></a><span>).</span></li><li><span>An </span><strong><span>out Point[</span>&nbsp;<span>]</span></strong><span> giving the sequence of points in the circuit found. If the length of this circuit is less than the value of the fourth parameter above, the length of this array should be the total number of points in the first two parameters combined; otherwise, its length is unimportant. Each point should occur at most once in this array.</span></li></ul><p><span>It should return a </span><strong><span>double</span></strong><span> giving the length of the circuit described by the </span><strong><span>out</span></strong><span> parameter, or any value that is at least the upper bound on the length of a useable circuit if the length of the circuit described by the </span><strong><span>out</span></strong><span> parameter is at least this length. Note that this is the length of a circuit - hence, it should include the distance from the last point in the array back to the first point. This method should implement the recursive algorithm described in </span><a href='#5-the-shortest-circuit-algorithm'><span>Section 5. The Shortest Circuit Algorithm</span></a><span>, including both optimizations. Use the following guidelines in implementing the algorithm:</span></p><ul><li><p><span>For efficiency reasons, don&#39;t use the </span><strong><span>Insert</span></strong><span> or </span><strong><span>Remove</span></strong><span> methods of either </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span>. Instead:</span></p><ul><li><span>You may use the </span><strong><span>Add</span></strong><span> method to add an element to the end of the list.</span></li><li><span>You may use the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-6.0#system-collections-generic-list-1-removeat(system-int32)'><strong><span>RemoveAt</span></strong></a><span> method, but only to remove the last element in the list. This method takes an </span><strong><span>int</span></strong><span> parameter giving the index of the element to remove.</span></li><li><span>You may use indexing to obtain or replace any element.</span></li></ul></li><li><p><span>The base case is that either there are no points remaining to be included or the length of the given path, plus the distance back to the first point in this path, is at least the bound on the length of a useable circuit. If either of the above conditions holds, convert the path to an array using its </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.toarray?view=net-6.0#system-collections-generic-list-1-toarray'><strong><span>ToArray</span></strong></a><span> method, and return the length of the circuit described by this array. Be sure to include the distance from the last point back to the first point in this length (use the formula given in </span><a href='#1-user-requirements'><span>Section 1. User Requirements</span></a><span>).</span></p></li><li><p><span>If the base case does not apply, there will always be at least one point in the list of remaining points; hence, there will be at least one recursive call. Given the above restrictions on the use of the </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span>s, it makes sense to do one recursive call prior to entering a loop to do any remaining recursive calls. To set up this recursive call, move the last point from the list of remaining points to the end of the path. Be sure to use the length of the resulting path as the length parameter to your recursive call. The </span><strong><span>bool</span></strong><span> parameter can be the same value as was passed in to the current call, because if the point added to the path is </span><em><span>p</span></em><sub><span>1</span></sub><span>, then only one point will remain, and the </span><strong><span>bool</span></strong><span> will be ignored. After the recursive call completes, remove the point you had added to the path.</span></p></li><li><p><span>To do the remaining recursive calls, iterate through the remaining points, starting with index 0 if the </span><strong><span>bool</span></strong><span> parameter is </span><strong><span>true</span></strong><span>, or starting with index 1 otherwise. On each iteration, add the current point to the end of the path, and replace it in the list of remaining points with the point you removed prior to the loop. In the recursive call, the </span><strong><span>bool</span></strong><span> should be </span><strong><span>true</span></strong><span> if either the </span><strong><span>bool</span></strong><span> passed to the current call is </span><strong><span>true</span></strong><span> or the current index is 1; otherwise, it should be </span><strong><span>false</span></strong><span>. After the recursive call, restore the contents of the two lists to the contents they had prior to the call.</span></p></li><li><p><span>As you are making recursive calls, it makes sense to use the parameter giving the upper bound on useable circuit lengths to keep track of the minimum circuit length, as any value larger than the value provided through this parameter will not be used.</span></p></li><li><p><span>Before returning, be sure to restore the point that was initially removed from the list of remaining points.</span></p></li></ul><h4 id='612-a-public-findshortestcircuit-method'><span>6.1.2. A public FindShortestCircuit method</span></h4><p><span>This method needs the following parameters:</span></p><ul><li><span>A </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> containing all of points to be used in the circuit.</span></li><li><span>An </span><strong><span>out Point[</span>&nbsp;<span>]</span></strong><span> that will contain the sequence of points in the shortest circuit.</span></li></ul><p><span>It should return a </span><strong><span>double</span></strong><span> giving the length of the shortest circuit. The purpose of this method is to call the above method to obtain the value for the </span><strong><span>out</span></strong><span> parameter and the value to return. You will need to set up this call to operate at the root of the tree described in </span><a href='#5-the-shortest-circuit-algorithm'><span>Section 5. The Shortest Circuit Algorithm</span></a><span>. Thus, the path should be the last point in the given list, and the list of remaining points should be the other points. You can use </span><strong><span>double.PositiveInfinity</span></strong><span> as the upper bound on useable values. Because the calling code will use the given list, be sure to restore it to its original contents before you return.</span></p><h3 id='62-the-drawingcanvas-class'><span>6.2. The DrawingCanvas Class</span></h3><p><strong><span>Important:</span></strong><span> Any errors you introduce by adding code to this class are likely to cause the Design windows to be non-functional. Be sure you have completed the GUI design before you begin working on this class. It would even be a good idea to go ahead and add empty event handlers for each of the event handlers described in </span><a href='#63-the-userinterface-class'><span>Section 6.3. The UserInterface Class</span></a><span>; however, be sure to read the instructions for adding the event handlers described in </span><a href='#631-an-event-handler-to-handle-a-mouseclick-event-on-the-drawingcanvas'><span>Section 6.3.1. An event handler to handle a MouseClick event on the DrawingCanvas</span></a><span> and </span><a href='#632-an-event-handler-to-handle-a-mousemove-event-on-the-drawingcanvas'><span>Section 6.3.2. An event handler to handle a MouseMove event on the DrawingCanvas</span></a><span>.</span></p><p><span>This class is defined to be a subclass of </span><a href='https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.usercontrol?view=netframework-4.7.2'><strong><span>UserControl</span></strong></a><span>. This means that the </span><strong><span>DrawingCanvas</span></strong><span> class </span><em><span>inherits</span></em><span> all </span><strong><span>public</span></strong><span> and </span><strong><span>protected</span></strong><span> members defined in the </span><strong><span>UserControl</span></strong><span> class. You can use any of them as if you had defined them within this class. The ones you will need are:</span></p><ul><li><span>The </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.forecolor?view=windowsdesktop-6.0#system-windows-forms-control-forecolor'><strong><span>ForeColor</span></strong></a><span> property, which gets or sets the foreground </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color?view=net-6.0'><strong><span>Color</span></strong></a><span> for this control.</span></li><li><span>The </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.invalidate?view=windowsdesktop-6.0#system-windows-forms-control-invalidate'><strong><span>Invalidate</span></strong></a><span> method, which takes no parameters and returns nothing. Call this method to indicate that this control needs to be redrawn at the next opportunity.</span></li></ul><p><span>You will need to add a </span><strong><span>private List&lt;(Point, Point)&gt;</span></strong><span> field to store the line segments to be drawn. Each tuple in this list will contain two </span><strong><span>Point</span></strong><span>s, which will denote the endpoints of a line segment. In addition, you will need to add two </span><strong><span>public</span></strong><span> methods, and you will need to override a </span><strong><span>protected</span></strong><span> method that is inherited from the </span><strong><span>UserControl</span></strong><span> class. These are described in what follows.</span></p><h4 id='621-an-onpaint-method'><span>6.2.1. An OnPaint method</span></h4><p><span>This method is inherited from the </span><strong><span>UserControl</span></strong><span> class. It is called to draw the </span><strong><span>DrawingCanvas</span></strong><span> whenever it needs to be redrawn. (You will </span><strong><span>not</span></strong><span> need to call this code yourself - use the </span><strong><span>Invalidate</span></strong><span> method whenever you need to cause the control to be redrawn. </span><strong><span>Invalidate</span></strong><span> will ensure that this method is called appropriately.) You need to redefine this method&#39;s behavior so that it draws the line segments represented in the </span><strong><span>List&lt;(Point, Point)&gt;</span></strong><span> field. To do this, at a location in the code where a method can be defined, type &quot;override&quot;, followed by a space. This will bring up a list of methods you can override. Select &quot;OnPaint&quot; from this list. A method stub for this method will be inserted.</span></p><p><span>Don&#39;t change any of the code inserted - the method header needs to be defined the way it&#39;s inserted, and the call to </span><strong><span>base.OnPaint</span></strong><span> (the </span><strong><span>OnPaint</span></strong><span> method defined in the </span><strong><span>UserControl</span></strong><span> class) needs to be there to take care of drawing the background and to take care of any other necessary details inherent in drawing a control. You will need to add code following this call.</span></p><p><span>The </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.painteventargs?view=windowsdesktop-6.0'><strong><span>PaintEventArgs</span></strong></a><span> parameter has a </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.painteventargs.graphics?view=windowsdesktop-6.0#system-windows-forms-painteventargs-graphics'><strong><span>Graphics</span></strong></a><span> property that gets an object of type </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.graphics?view=windowsdesktop-6.0'><strong><span>Graphics</span></strong></a><span>, which in turn has a </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.graphics.drawline?view=windowsdesktop-6.0#system-drawing-graphics-drawline(system-drawing-pen-system-drawing-point-system-drawing-point)'><strong><span>DrawLine</span></strong></a><span> method that can be called to draw a line segment on the control. One of the parameters to this method is a </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.pen?view=windowsdesktop-6.0'><strong><span>Pen</span></strong></a><span>. You will therefore need to </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.drawing.pen.-ctor?view=windowsdesktop-6.0#system-drawing-pen-ctor(system-drawing-color)'><span>construct a new </span><strong><span>Pen</span></strong></a><span>, using as the only parameter the foreground color of the control (see the inherited members listed above). Then iterate through the line segments represented in the </span><strong><span>List&lt;(Point, Point)&gt;</span></strong><span> field, drawing each line segment onto the control.</span></p><h4 id='622-a-public-method-to-draw-a-line-segment'><span>6.2.2. A public method to draw a line segment</span></h4><p><span>This method should take two </span><strong><span>Point</span></strong><span>s as its parameters. These </span><strong><span>Point</span></strong><span>s will give the endpoints of the line segment to be drawn. It should return nothing. This method needs to add a new </span><strong><span>(Point, Point)</span></strong><span> containing the given </span><strong><span>Point</span></strong><span>s to the </span><strong><span>List&lt;(Point, Point)&gt;</span></strong><span> field. It then needs to indicate that the control needs to be redrawn (see the list of inherited members above).</span></p><h4 id='623-a-public-method-to-clear-the-control'><span>6.2.3. A public method to clear the control</span></h4><p><span>This method should take no parameters and return nothing. It should clear the contents of the </span><strong><span>List&lt;(Point, Point)&gt;</span></strong><span> and indicate that the control needs to be redrawn (see the list of inherited members above).</span></p><h3 id='63-the-userinterface-class'><span>6.3. The UserInterface Class</span></h3><p><span>This class will need the following </span><strong><span>private</span></strong><span> fields:</span></p><ul><li><span>A </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> containing the points entered by the user. Initialize this to a new list.</span></li><li><span>A </span><strong><span>Point</span></strong><span> giving the last known location of the mouse. Initialize this to a point containing a negative value in at least one coordinate.</span></li></ul><p><span>It will also need four event handlers and at least two other </span><strong><span>private</span></strong><span> methods. The four event handlers are described in what follows.</span></p><h4 id='631-an-event-handler-to-handle-a-mouseclick-event-on-the-drawingcanvas'><span>6.3.1. An event handler to handle a MouseClick event on the DrawingCanvas</span></h4><p><span>To create this event handler, click on the </span><strong><span>DrawingCanvas</span></strong><span>, and in the Properties window, click the icon that looks like a lightning bolt (this icon and the one to its left toggle views between events and properties). Find </span><strong><span>MouseClick</span></strong><span> in the resulting list, and double-click it. This will insert a method stub for the event handler.</span></p><p><span>The </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.mouseeventargs?view=windowsdesktop-6.0'><strong><span>MouseEventArgs</span></strong></a><span> parameter contains information about the mouse click. In particular, its </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.mouseeventargs.location?view=windowsdesktop-6.0#system-windows-forms-mouseeventargs-location'><strong><span>Location</span></strong></a><span> property gets a </span><strong><span>Point</span></strong><span> giving the location of the mouse click on the control. You will need to plot an &quot;x&quot; on this point by drawing two diagonal lines, each connecting two points diagonally adjacent to the location of the mouse click. Then add the point to the </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> field. If this makes the number of points greater than 2, enable the &quot;Find Circuit&quot; button.</span></p><p><span>You will also need to add the </span><strong><span>Point</span></strong><span> obtained above to the </span><strong><span>ListBox</span></strong><span>. To do this, you will need to use the </span><strong><span>ListBox</span></strong><span>&#39;s </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.listbox.items?view=windowsdesktop-6.0#system-windows-forms-listbox-items'><strong><span>Items</span></strong></a><span> property, which gets an </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.ilist?view=net-6.0'><strong><span>IList</span></strong></a><span> containing the elements displayed. You will need to add the </span><strong><span>Point</span></strong><span> to this </span><strong><span>IList</span></strong><span> using its </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.ilist.add?view=net-6.0#system-collections-ilist-add(system-object)'><strong><span>Add</span></strong></a><span> method.</span></p><h4 id='632-an-event-handler-to-handle-a-mousemove-event-on-the-drawingcanvas'><span>6.3.2. An event handler to handle a MouseMove event on the DrawingCanvas</span></h4><p><span>You will need to create this event handler using the same technique as for the above event handler. This event handler will be called every time the mouse is moved over the </span><strong><span>DrawingCanvas</span></strong><span>. It is responsible for updating the </span><strong><span>ToolTip</span></strong><span> to display the mouse&#39;s location.</span></p><p><span>You can get the location of the mouse in the same way as in the above method. In order to eliminate some screen flicker in the </span><strong><span>ToolTip</span></strong><span>, check whether this location is different from the last known mouse location. If so:</span></p><ul><li><span>Use the </span><strong><span>ToolTip</span></strong><span>&#39;s </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.tooltip.settooltip?view=windowsdesktop-6.0#system-windows-forms-tooltip-settooltip(system-windows-forms-control-system-string)'><strong><span>SetToolTip</span></strong></a><span> method to update the </span><strong><span>ToolTip</span></strong><span>.  The first parameter should be your </span><strong><span>DrawingCanvas</span></strong><span>, and the second parameter should be the mouse&#39;s current location, converted to a </span><strong><span>string</span></strong><span>.</span></li><li><span>Update the last known mouse location with its current location.</span></li></ul><h4 id='633-an-event-handler-to-handle-a-click-event-on-the-find-circuit-button'><span>6.3.3. An event handler to handle a Click event on the &quot;Find Circuit&quot; button</span></h4><p><span>This event handler is responsible for finding a shortest circuit and displaying it on the GUI. Use the </span><strong><span>CircuitFinder.GetShortestCircuit</span></strong><span> method to find a shortest circuit. Then clear both the </span><strong><span>DrawingCanvas</span></strong><span> and the </span><strong><span>ListBox</span></strong><span> (use the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.ilist.clear?view=net-6.0#system-collections-ilist-clear'><strong><span>Clear</span></strong></a><span> method of the </span><strong><span>ListBox</span></strong><span>&#39;s </span><strong><span>Items</span></strong><span> property), and for each point in the circuit:</span></p><ul><li><span>Plot the point as described in </span><a href='#631-an-event-handler-to-handle-a-mouseclick-event-on-the-drawingcanvas'><span>Section 6.3.1. An event handler to handle a MouseClick event on the DrawingCanvas</span></a><span>.</span></li><li><span>Add the point to the </span><strong><span>ListBox</span></strong><span>.</span></li></ul><p><span>Then for each point in the circuit except the first, draw a line from the previous point in the circuit to the current one. To complete the circuit, draw a line from the last point in the circuit to the first. Finally, show a </span><strong><span>MessageBox</span></strong><span> to display the message described in </span><a href='#32-behavior-of-the-gui'><span>Section 3.2. Behavior of the GUI</span></a><span> above.</span></p><h4 id='634-an-event-handler-to-handle-a-click-event-on-the-clear-button'><span>6.3.4. An event handler to handle a Click event on the &quot;Clear&quot; button</span></h4><p><span>This event handler is responsible for removing all points and lines from the </span><strong><span>DrawingCanvas</span></strong><span>, the </span><strong><span>ListBox</span></strong><span>, and the </span><strong><span>List</span><span>&lt;</span><span>Point</span><span>&gt;</span></strong><span> field. It also needs to disable the &quot;Find Circuit&quot; button.</span></p><h2 id='7-testing-and-performance'><span>7. Testing and Performance</span></h2><p><span>Unit tests have been provided to test your </span><strong><span>CircuitFinder</span></strong><span> class. These tests are grouped by two </span><em><span>traits</span></em><span>: &quot;A: Short Tests&quot; and &quot;B: Long Tests&quot;. You should work on the short tests first (you can group the tests by traits in the Test Explorer using &quot;Group By&quot; icon - look for this tool tip as you hover the mouse over the icons).</span></p><p><span>All of the tests are actually done by the </span><strong><span>TestGetShortestCircuit</span></strong><span> method. It is passed an index into three arrays:</span></p><ul><li><code>_testCasePoints</code><span>, whose elements are </span><strong><span>Point[ ]</span></strong><span>s giving the points used in the test.</span></li><li><code>_testCaseLengths</code><span>, whose elements are </span><strong><span>double</span></strong><span>s giving the expected shortest path length for the test.</span></li><li><code>_testCaseResults</code><span>, whose elements are </span><strong><span>Point[ ]</span></strong><span>s giving the expected sequence of points to be returned through the second parameter to </span><strong><span>GetShortestCircuit</span></strong><span>.</span></li></ul><p><span>Thus, for example, the test </span><strong><span>ShortTest(1)</span></strong><span> uses a list containing the points in </span><code>_testCasePoints[1]</code><span> as the first parameter to </span><strong><span>GetShortestCircuit</span></strong><span>. It then verifies that the length returned is within 0.000001 of 1600 (the value in </span><code>_testCaseLengths[1]</code><span>) and that the </span><strong><span>out</span></strong><span> parameter contains the sequence of points in </span><code>_testCaseResults[1]</code><span>. </span></p><p><span>Running the long tests will take longer than running the short tests, and may run as long as the timeout of 10 seconds if your code isn&#39;t correct. If you&#39;ve grouped the tests by traits, you can run just the short tests by right-clicking on &quot;A: Short Tests (5)&quot; and selecting &quot;Run&quot;.</span></p><p><span>Use the timing information from the long tests to check the optimization for pruning long paths. Both tests should finish before timing out, and </span><strong><span>LongTest(6)</span></strong><span> should take roughly eight times as long as </span><strong><span>LongTest(5)</span></strong><span>, where much more pruning can be done (you might want to try running these two tests a few times - the time required is not always the same).</span></p><p><span>Besides running the unit tests, you will also need to test the GUI to ensure that it behaves as shown in the </span><a href='https://youtu.be/rAJ5Ruwtyyw'><span>demo video</span></a><span>. If the unit tests pass, you can be reasonably sure that the circuits it finds have the shortest length, but make sure it is displaying them correctly.</span></p><p><strong><span>LongTest(6)</span></strong><span> runs in around a second on my notebook, which is almost 5 years old, but reasonably fast. The actual timing for your machine will depend on how fast it is, but even a slow machine shouldn&#39;t take more than a few seconds for this test. Likewise, the GUI should respond in a few seconds on 13 points. Larger data sets will take significantly more time.</span></p><h2 id='8-submitting-your-assignment'><span>8. Submitting Your Assignment</span></h2><p><span>Be sure to </span><strong><span>commit</span></strong><span> all your changes, then </span><strong><span>push</span></strong><span> your commits to your GitHub repository. Then submit the </span><em><span>entire URL</span></em><span> of the commit that you want graded. </span></p><p><strong><span>Note:</span></strong><span> GitHub will </span><strong><span>not</span></strong><span> run the unit tests when you push your code. As for previous homework assignments, it is set up to use GitHub&#39;s autograding feature to track push times. No actual testing/grading is done, but after each push, the GitHub page for the repository will show a green check mark on the line indicating the latest commit, regardless of whether your program works or your unit tests pass. The only purpose for using the autograding feature in this way is to give us a backup indication of your push times in case you submitted your assignment incorrectly.</span></p><p><span> </span></p></div></div>
+</body>
+</html>
